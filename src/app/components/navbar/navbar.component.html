@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span>Social</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <span>
+    <button mat-raised-button [matMenuTriggerFor]="menu">Acceder</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>email</mat-icon>
+    Correo electrónico</button>
+  <button mat-menu-item>
+      <mat-icon svgIcon="google_icon"></mat-icon>
+    Acceder con Google
+  </button>
+</mat-menu>
+  </span>
+</mat-toolbar>

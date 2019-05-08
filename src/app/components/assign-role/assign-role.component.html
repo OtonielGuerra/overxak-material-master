@@ -1,0 +1,22 @@
+<h2 style="text-align:center">Asignar rol:</h2>
+<div style="text-align:center">
+    <mat-form-field>
+        <mat-label>Rol</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let rol of rols" [value]="rol">
+            {{rol}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+
+<div style="text-align:center">
+    <mat-form-field>
+        <mat-label>Familia</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let familia of familias" [value]="familia">
+            {{familia}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>

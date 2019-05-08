@@ -1,0 +1,167 @@
+<h2 style="text-align:center">Crear persona</h2>
+<form class="add-form">
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Primer nombre</mat-label>
+            <input matInput placeholder="Primer Nombre" [(ngModel)]="person.primer_nombre" name="firstname">
+            <mat-icon matSuffix>persona</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Segundo nombre</mat-label>
+            <input matInput placeholder="Segundo Nombre" [(ngModel)]="person.segundo_nombre" name="secondname">
+            <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Primer apellido</mat-label>
+            <input matInput placeholder="Primer Apellido" [(ngModel)]="person.primer_apellido" name="firstsurname">
+            <mat-icon matSuffix>persona</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Segundo apellido</mat-label>
+            <input matInput placeholder="Segundo Apellido" [(ngModel)]="person.segundo_apellido" name="secondsurname">
+            <mat-icon matSuffix>persona</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" [(ngModel)]="person.fecha_nacimiento" name="fechanacimiento">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Religión</mat-label>
+            <mat-select [(ngModel)]="person.religion" name="religion">
+              <mat-option *ngFor="let religion of religions" [value]="religion.value">
+                {{religion.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>group_work</mat-icon>
+        </mat-form-field>
+        <div style="text-align:center">
+          <mat-form-field appearance="outline" class="s-md-width">
+            <mat-label>Ingrese conrreo electrónico</mat-label>
+            <input matInput placeholder="Correo electrónico" [(ngModel)]="emailInput" name="email">
+            <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>&nbsp; 
+          <button mat-mini-fab>
+            <mat-icon (click)="addEmail()">add</mat-icon>
+          </button>
+          <br/>
+          <mat-selection-list #emails>
+            <mat-list-option *ngFor="let email of emailArray">
+              {{email}}
+            </mat-list-option>
+          </mat-selection-list>
+          <p>
+            Correos agregados: {{emailArray.length}}
+          </p>
+          <br/>
+          <br/>
+        </div>
+
+        <div style="text-align:center">
+          <mat-form-field appearance="outline" class="min-width">
+            <mat-label>Género</mat-label>
+            <mat-select [(ngModel)]="person.genero" name="genero">
+              <mat-option *ngFor="let genero of generos" [value]="genero.value">
+                {{genero.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+        </div>
+
+        <div style="text-align:center;">
+            <mat-form-field appearance="outline" class="s-md-width">
+                <mat-label>Estado civil</mat-label>
+                <mat-select [(ngModel)]="person.estado_civil" name="estado">
+                    <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                      {{estado.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+        </div>
+        <div style="text-align:center;" *ngIf="person.estado_civil !== '' && person.estado_civil !== 'Solter@' && person.estado_civil !== 'Unión de hecho' && person.genero !== 'Masculino'">
+            <mat-form-field appearance="outline" class="s-md-width">
+                <mat-label>Apellido conyugal</mat-label>
+                <input matInput placeholder="Apellido conyugal" [(ngModel)]="person.apellido_conyugal" name="apellido_conyugal">
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+        </div>
+
+
+        <h3 style="text-align:center">Datos de vivienda:</h3>
+        <div style="text-align:center">
+            <mat-form-field appearance="outline" class="m-md-width">
+                <mat-label>Departamento</mat-label>
+                <mat-select [(ngModel)]="person.departamento" name="department">
+                  <mat-option *ngFor="let deparment of departments" [value]="deparment">
+                    {{deparment}}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>home</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="md-width">
+                <mat-label>Municipio</mat-label>
+                <input matInput placeholder="Municipio" [(ngModel)]="person.municipio" name="municipio">
+                <mat-icon matSuffix>home</mat-icon>
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="x-min-width">
+              <mat-label>Zona</mat-label>
+              <input matInput placeholder="Zona" [(ngModel)]="person.zona" name="zona">
+              <mat-icon matSuffix>home</mat-icon>
+          </mat-form-field> &nbsp;
+          <mat-form-field appearance="outline" class="x-min-width">
+            <mat-label>Avenida</mat-label>
+            <input matInput placeholder="Avenida" [(ngModel)]="person.avenida" name="avenida">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Colonia</mat-label>
+            <input matInput placeholder="Colonia" [(ngModel)]="person.colonia" name="colonia">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="min-width">
+            <mat-label>Manzana</mat-label>
+            <input matInput placeholder="Manzana" [(ngModel)]="person.manzana" name="manzana">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="x-min-width">
+            <mat-label>Calle</mat-label>
+            <input matInput placeholder="# de calle" [(ngModel)]="person.calle" name="calle">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="min-width">
+            <mat-label>No. Casa</mat-label>
+            <input matInput placeholder="# de casa" [(ngModel)]="person.noCasa" name="nocassa">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+        </div>
+
+    <h3 style="text-align:center">Contacto telefónico:</h3>
+    <div style="text-align:center">
+        <mat-form-field appearance="outline" class="min-width">
+            <mat-label>Número móvil</mat-label>
+            <input matInput placeholder="12345678" maxlength="8" [(ngModel)]="person.celular" name="cel">
+            <mat-icon matSuffix>contact_phone</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="min-width">
+          <mat-label>Teléfono de casa</mat-label>
+          <input matInput placeholder="22000000" [(ngModel)]="person.casa" name="house">
+          <mat-icon matSuffix>contact_phone</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="min-width">
+        <mat-label>Otro</mat-label>
+        <input matInput placeholder="Teléfono opcional" [(ngModel)]="person.otro" name="otro">
+        <mat-icon matSuffix>contact_phone</mat-icon>
+    </mat-form-field>
+    </div>
+
+
+    <div style="text-align:center">
+      <button mat-raised-button color="primary" (click)="onSubmit()">
+        <mat-icon>save</mat-icon>
+        Guardar</button>
+    </div>
+
+</form>
+

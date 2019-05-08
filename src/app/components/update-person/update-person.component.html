@@ -1,0 +1,87 @@
+<h2 style="text-align:center">Actualizar persona</h2>
+<form class="update-form">
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Primer nombre</mat-label>
+            <input matInput placeholder="Primer Nombre" [(ngModel)]="data.persona.primer_nombre" name="firstname">
+            <mat-icon matSuffix>persona</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Segundo nombre</mat-label>
+            <input matInput placeholder="Segundo Nombre" [(ngModel)]="data.persona.segundo_nombre" name="secondname">
+            <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Primer apellido</mat-label>
+            <input matInput placeholder="Primer Apellido" [(ngModel)]="data.persona.primer_apellido" name="firstsurname">
+            <mat-icon matSuffix>persona</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Segundo apellido</mat-label>
+            <input matInput placeholder="Segundo Apellido" [(ngModel)]="data.persona.segundo_apellido" name="secondsurname">
+            <mat-icon matSuffix>persona</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" [(ngModel)]="data.persona.fecha_nacimiento" name="fechanacimiento">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi  #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Religión</mat-label>
+            <mat-select [(ngModel)]="data.persona.religion" name="religion">
+              <mat-option *ngFor="let religion of religions" [value]="religion.value">
+                {{religion.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>group_work</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="s-md-width">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput placeholder="Correo electrónico" [(ngModel)]="data.persona.correo" name="email">
+            <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="min-width">
+            <mat-label>Género</mat-label>
+            <mat-select [(ngModel)]="data.persona.genero" name="genero">
+              <mat-option *ngFor="let genero of generos" [value]="genero.value">
+                {{genero.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+        <h3 style="text-align:center">Datos de vivienda:</h3>
+        <div style="text-align:center">
+            <mat-form-field appearance="outline" class="m-md-width">
+                <mat-label>Departamento</mat-label>
+                <mat-select [(ngModel)]="data.persona.direccion.departamento" name="department">
+                  <mat-option *ngFor="let deparment of departments" [value]="deparment">
+                    {{deparment}}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>home</mat-icon>
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline" class="md-width">
+            <mat-label>Municipio</mat-label>
+            <input matInput placeholder="Municipio" [(ngModel)]="data.persona.direccion.municipio" name="municipio">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="x-min-width">
+          <mat-label>Zona</mat-label>
+          <input matInput placeholder="Zona" [(ngModel)]="data.persona.direccion.zona" name="zona">
+          <mat-icon matSuffix>home</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="x-min-width">
+        <mat-label>Avenida</mat-label>
+        <input matInput placeholder="Avenida" [(ngModel)]="data.persona.direccion.avenida" name="avenida">
+        <mat-icon matSuffix>home</mat-icon>
+    </mat-form-field>
+
+    <div style="text-align:center">
+      <button mat-raised-button color="primary" (click)="SaveChanges()">
+        <mat-icon>save</mat-icon>
+        Guardar</button>
+    </div>
+
+</form>
+

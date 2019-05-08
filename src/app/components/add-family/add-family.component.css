@@ -1,0 +1,23 @@
+.example-full-width {
+    width: 100%;
+  }
+
+  .m-md-width{
+    width: 75%;
+  }
+
+  .s-md-width{
+    width: 65%;
+  }
+
+  .md-width{
+    width: 50%; 
+  }
+
+  .min-width{
+      width: 35%;
+  }
+
+  .x-min-width{
+    width: 22%;
+  }
