@@ -18,9 +18,12 @@ export class Persona {
         public calle: string,
         public manzana: string,
         public noCasa : string,
-        public celular: number,
-        public casa: number,
-        public otro: number
+        public sector: string,
+        public cuadra: string,
+        public edificio: string,
+        public piso: string,
+        public apto: string,
+        public numeros: Array<any>
     ){
  
     }

@@ -2,7 +2,7 @@
   <div style="text-align:center">
       <mat-form-field appearance="outline">
           <mat-label>Buscar personas...</mat-label>
-          <input matInput placeholder="Búsqueda" (keyup)="Search($event)" autocomplete="off">
+          <input matInput placeholder="Búsqueda" (input)="Search($event)" autocomplete="off">
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         &nbsp;

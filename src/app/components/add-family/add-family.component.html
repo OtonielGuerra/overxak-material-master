@@ -1,9 +1,14 @@
 <h2 style="text-align:center">Crear familia</h2>
 <div style="text-align:center">
   <form class="add-form">
+      <mat-form-field appearance="outline" *ngIf="family.padre && family.madre" class="s-md-width">
+          <mat-label>Nombre de la familia</mat-label>
+          <input disabled matInput placeholder="Nombre de la familia" value="{{family.padre.primer_apellido}} {{family.madre.primer_apellido}}" name="familyName">
+          <mat-icon matSuffix>people</mat-icon>
+  </mat-form-field>
     <mat-form-field appearance="outline" *ngIf="padres.length > 0" class="s-md-width">
             <mat-label>Padre</mat-label>
-            <mat-select [(ngModel)]="family.padre" name="father">
+            <mat-select [(ngModel)]="family.padre" name="father" (change)="assign()" #madre>
               <mat-option *ngFor="let padre of padres" [value]="padre">
                 {{padre.primer_nombre}}
                 {{padre.segundo_nombre}}
@@ -14,7 +19,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline" *ngIf="padres.length > 0" class="s-md-width">
         <mat-label>Madre</mat-label>
-        <mat-select [(ngModel)]="family.madre" name="mother">
+        <mat-select [(ngModel)]="family.madre" name="mother" (change)="assign()" #madre>
           <mat-option *ngFor="let madre of madres" [value]="madre">
             {{madre.primer_nombre}}
             {{madre.segundo_nombre}}
@@ -49,7 +54,7 @@
 <br/>
 
 <div style="text-align:center">
-  <button mat-raised-button color="accent" (click)="SaveFamilia()" [disabled]="!family.padre || !family.madre || !family.encargado || !family.hijos">
+  <button mat-raised-button color="accent" (click)="SaveFamilia()" [disabled]="!family.padre || !family.madre || !family.encargado || family.hijos.length < 1">
     <mat-icon>save</mat-icon>
     Guardar familia</button>
 </div>

@@ -1,5 +1,6 @@
 export class Family{
-    constructor(public padre: String,
+    constructor(public name: String,
+        public padre: String,
         public madre: String,
         public encargado: String,
         public hijos:Array<any> ){}

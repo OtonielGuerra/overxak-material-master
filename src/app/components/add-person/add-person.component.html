@@ -37,22 +37,25 @@
         </mat-form-field>
         <div style="text-align:center">
           <mat-form-field appearance="outline" class="s-md-width">
-            <mat-label>Ingrese conrreo electrónico</mat-label>
-            <input matInput placeholder="Correo electrónico" [(ngModel)]="emailInput" name="email">
+            <mat-label>Ingrese correo electrónico</mat-label>
+            <input matInput placeholder="Correo electrónico" [(ngModel)]="emailInput" name="email" type="email" autocomplete="off">
             <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>&nbsp; 
           <button mat-mini-fab>
             <mat-icon (click)="addEmail()">add</mat-icon>
           </button>
           <br/>
-          <mat-selection-list #emails>
-            <mat-list-option *ngFor="let email of emailArray">
-              {{email}}
-            </mat-list-option>
-          </mat-selection-list>
-          <p>
-            Correos agregados: {{emailArray.length}}
-          </p>
+          <div style="text-align:center">
+              <mat-chip-list>
+                <mat-chip *ngFor="let email of emailArray" color="accent" [removable]="removable" (click)="eliminar(email)">
+                    <mat-icon>mail</mat-icon>
+                  {{email}}</mat-chip>
+              </mat-chip-list>
+            </div>
+      
+            <p>
+              Correos agregados: {{emailArray.length}}
+            </p>
           <br/>
           <br/>
         </div>
@@ -125,35 +128,73 @@
             <input matInput placeholder="Manzana" [(ngModel)]="person.manzana" name="manzana">
             <mat-icon matSuffix>home</mat-icon>
         </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="min-width">
+            <mat-label>No. Casa</mat-label>
+            <input matInput placeholder="# de casa" [(ngModel)]="person.noCasa" name="nocassa">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp; 
         <mat-form-field appearance="outline" class="x-min-width">
             <mat-label>Calle</mat-label>
             <input matInput placeholder="# de calle" [(ngModel)]="person.calle" name="calle">
             <mat-icon matSuffix>home</mat-icon>
         </mat-form-field> &nbsp;
-        <mat-form-field appearance="outline" class="min-width">
-            <mat-label>No. Casa</mat-label>
-            <input matInput placeholder="# de casa" [(ngModel)]="person.noCasa" name="nocassa">
+        <mat-form-field appearance="outline" class="x-min-width" *ngIf="hidden === false">
+            <mat-label>Sector</mat-label>
+            <input matInput placeholder="Sector" [(ngModel)]="sector" name="sector">
             <mat-icon matSuffix>home</mat-icon>
         </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="x-min-width" *ngIf="hidden === false">
+            <mat-label>Cuadra</mat-label>
+            <input matInput placeholder="Cuadra" [(ngModel)]="cuadra" name="cuadra">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="x-min-width" *ngIf="hidden === false">
+            <mat-label>Edificio</mat-label>
+            <input matInput placeholder="Edificio" [(ngModel)]="edificio" name="edificio">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="x-min-width" *ngIf="hidden === false">
+            <mat-label>Piso</mat-label>
+            <input matInput placeholder="# de piso" [(ngModel)]="piso" name="piso">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" class="x-min-width" *ngIf="hidden === false">
+            <mat-label>Apartamento</mat-label>
+            <input matInput placeholder="# de Apartamento" [(ngModel)]="apartamento" name="apartamento">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field> &nbsp;
+          <button mat-mini-fab *ngIf="hidden === true">
+            <mat-icon (click)="mostrarCampos()">add</mat-icon>
+          </button>
+          <button mat-mini-fab *ngIf="hidden === false" color="warn">
+              <mat-icon (click)="mostrarCampos()">remove_circle_outline</mat-icon>
+          </button>
         </div>
 
     <h3 style="text-align:center">Contacto telefónico:</h3>
     <div style="text-align:center">
-        <mat-form-field appearance="outline" class="min-width">
-            <mat-label>Número móvil</mat-label>
-            <input matInput placeholder="12345678" maxlength="8" [(ngModel)]="person.celular" name="cel">
-            <mat-icon matSuffix>contact_phone</mat-icon>
-        </mat-form-field> &nbsp;
-        <mat-form-field appearance="outline" class="min-width">
-          <mat-label>Teléfono de casa</mat-label>
-          <input matInput placeholder="22000000" [(ngModel)]="person.casa" name="house">
-          <mat-icon matSuffix>contact_phone</mat-icon>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="min-width">
-        <mat-label>Otro</mat-label>
-        <input matInput placeholder="Teléfono opcional" [(ngModel)]="person.otro" name="otro">
+      <mat-form-field appearance="outline" class="s-md-width">
+        <mat-label>Ingrese número telefónico</mat-label>
+        <input matInput placeholder="# de teléfono" [(ngModel)]="phoneInput" name="phone" autocomplete="off" maxlength="8">
         <mat-icon matSuffix>contact_phone</mat-icon>
-    </mat-form-field>
+    </mat-form-field>&nbsp; 
+      <button mat-mini-fab>
+        <mat-icon (click)="addPhone()">add</mat-icon>
+      </button>
+      <br/>
+      <div style="text-align:center">
+        <mat-chip-list>
+          <mat-chip *ngFor="let phone of phoneArray" color="accent" [removable]="removable" (click)="remove(phone)">
+              <mat-icon>phone</mat-icon>
+            {{phone}}</mat-chip>
+        </mat-chip-list>
+      </div>
+
+      <p>
+        Teléfonos agregados: {{phoneArray.length}}
+      </p>
+      <br/>
+      <br/>
     </div>
 
 

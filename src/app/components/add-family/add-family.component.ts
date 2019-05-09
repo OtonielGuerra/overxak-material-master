@@ -3,6 +3,7 @@ import { Family } from 'src/app/models/Family';
 import { PersonaService } from 'src/app/services/persona.service';
 import { MatDialog, MatSnackBar, MatDialogRef } from '@angular/material';
 import { ListChildrensComponent } from '../list-childrens/list-childrens.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-family',
@@ -10,7 +11,7 @@ import { ListChildrensComponent } from '../list-childrens/list-childrens.compone
   styleUrls: ['./add-family.component.css']
 })
 export class AddFamilyComponent implements OnInit {
-  family: Family = new Family('','','',[]);
+  family: Family = new Family('','','','',[]);
   padres = [];
   madres = [];
   encargados = [];
@@ -18,6 +19,7 @@ export class AddFamilyComponent implements OnInit {
   hijosList = [];
   selectedChildren = [];
   filter:any = "Primer Nombre";
+  familyName = "";
   sons = [];
 
 
@@ -72,19 +74,27 @@ export class AddFamilyComponent implements OnInit {
   }
 
   SaveFamilia(){
+    this.family.hijos.forEach((hijo) => {
+      this.selectedChildren.push({idHijo: hijo._id, name: hijo.primer_nombre + " " + hijo.primer_apellido})
+    })
+    this.family.hijos = this.selectedChildren;
     this.rest.setFamilia(this.family).subscribe(res => {
+      console.log(res)
       if(res.familiaSave && res.familiaSave._id){
-        console.log(this.family);
         this.snack.open('Familia guardada con éxito', 'Cerrar', {
           duration: 2500
         })
         this.dialogRef.close()
-      }else{
-        this.snack.open('No se pudo guardar la familia', 'Cerrar', {
+      }else if(res.message){
+        this.snack.open('No se pudo guardar la familia: ' + res.message, 'Cerrar', {
           duration: 2500
         })
       }
     })
+  }
+
+  assign(){
+
   }
 
 

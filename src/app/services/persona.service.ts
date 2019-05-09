@@ -32,7 +32,6 @@ export class PersonaService {
 
   setFamilia(familia) {
     let params = JSON.stringify(familia);
-    console.log('Objeto', params)
     return this.http.post(this.endpoint + 'saveFamilia', params, this.httpOptions).pipe(map(this.extractData));
   }
 

@@ -30,6 +30,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { AddFamilyComponent } from './components/add-family/add-family.component';
 import { ListChildrensComponent } from './components/list-childrens/list-childrens.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import {MatChipsModule, MatChip} from '@angular/material/chips';
+import { AddCareerComponent } from './components/add-career/add-career.component';
+import { ListCareersComponent } from './components/list-careers/list-careers.component';
 
 
 const MOMENT_FORMATS = {
@@ -53,7 +56,9 @@ const MOMENT_FORMATS = {
     AddPersonComponent,
     AssignRoleComponent,
     AddFamilyComponent,
-    ListChildrensComponent
+    ListChildrensComponent,
+    AddCareerComponent,
+    ListCareersComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +83,8 @@ const MOMENT_FORMATS = {
     MatCheckboxModule,
     MatRadioModule,
     MatSelectModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    MatChipsModule
   ],
   entryComponents: [
     UpdatePersonComponent,
